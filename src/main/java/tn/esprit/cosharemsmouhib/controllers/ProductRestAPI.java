@@ -10,7 +10,7 @@ import tn.esprit.cosharemsmouhib.services.ProductService;
 
 @RestController
 public class ProductRestAPI {
-    private String title="hello , im the product microservice";
+    private String title="hello , im the updated product microservice";
 
     @RequestMapping("/hello")
     public String sayHello(){

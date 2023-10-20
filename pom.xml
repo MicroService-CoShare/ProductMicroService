@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>tn.esprit</groupId>
-    <artifactId>Co-share-ms-mouhib</artifactId>
+    <artifactId>ProductMicroService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Co-share-ms-mouhib</name>
     <description>Co-share-ms-mouhib</description>

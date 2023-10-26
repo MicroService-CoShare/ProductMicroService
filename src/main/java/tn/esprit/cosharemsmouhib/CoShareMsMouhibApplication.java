@@ -21,9 +21,9 @@ private ProductRepository repository;
 @Bean
     ApplicationRunner init(){
         return (args) -> {
-            repository.save(new Product("tv"));
-            repository.save(new Product("tv"));
-            repository.save(new Product("tv"));
+            repository.save(new Product("tv","https://images.samsung.com/is/image/samsung/ph-hd-t4300-ua32t4300agxxp-frontblack-224825896?$650_519_PNG$","best tv"));
+            repository.save(new Product("tv","https://images.samsung.com/is/image/samsung/my-fhd-tv-t5300-ua43t6000akxxm-frontblack-219371052?$650_519_PNG$","mediocre"));
+            repository.save(new Product("tv","https://instorestatic.tcl.com/media/catalog/product/0/1/01.png","bad tv"));
             repository.findAll().forEach(System.out::println);
         };
 }

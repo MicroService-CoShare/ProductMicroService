@@ -25,5 +25,12 @@ public class Product implements Serializable {
         super();
         this.label = label ;
     }
+    public Product(String label,String image,String desc){
+        super();
+        this.label = label ;
+        this.image = image ;
+        this.description = desc;
+    }
+
 
 }

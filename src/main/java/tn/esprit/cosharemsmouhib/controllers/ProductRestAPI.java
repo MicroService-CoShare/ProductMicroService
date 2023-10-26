@@ -9,6 +9,7 @@ import tn.esprit.cosharemsmouhib.entities.Product;
 import tn.esprit.cosharemsmouhib.services.ProductService;
 
 import javax.annotation.security.RolesAllowed;
+import java.util.List;
 
 @RestController
 public class ProductRestAPI {
@@ -30,10 +31,31 @@ public class ProductRestAPI {
     @Autowired
     private ProductService productService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RolesAllowed("user")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Product> createCandidat(@RequestBody Product produit) {
-        return new ResponseEntity<>(productService.addProduct(produit), HttpStatus.OK);
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
+    }
+    @RequestMapping("/getAll")
+    @RolesAllowed("user")
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/modifyProduct/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RolesAllowed("user")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") int id,
+                                                   @RequestBody Product product){
+        return new ResponseEntity<>(productService.updateProduct(id, product),
+                HttpStatus.OK);
+    }
+    @RequestMapping(value = "/deleteProduct/{id}", method = RequestMethod.DELETE)
+    @RolesAllowed("user")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> deleteProduct(@PathVariable(value = "id") int id){
+        return new ResponseEntity<>(productService.deleteProduct(id), HttpStatus.OK);
+    }
 }

@@ -12,6 +12,7 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ProductRestAPI {
     private String title="hello , im the updated product microservice";
     private String admin="hello , im admin";
